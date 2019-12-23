@@ -1,0 +1,13 @@
+
+.showinfo{
+	background-color: #EEEDEE;
+	padding: 5px 8px;
+	border-radius: 5px;
+	border: 1px solid black;
+	color: white;
+}
+
+.error_msg{
+	color: red;
+
+}
