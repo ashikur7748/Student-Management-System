@@ -9,7 +9,14 @@ require_once 'config.php';
 					  </ol>
 					</nav>
 				</div>
+<?php
+$count_student = mysqli_query($link, "SELECT * FROM `add_student`");
+$total_student = mysqli_num_rows($count_student);
 
+$count_users = mysqli_query($link, "SELECT * FROM `user_information`");
+$total_users = mysqli_num_rows($count_users);
+
+?>
 				<div class="row pb-4">
 					<div class="col-sm-4">
 						<div class="card bg-primary">
@@ -21,20 +28,20 @@ require_once 'config.php';
 
 									<div class="col-sm-9">
 										<div class="text-white float-right" style="font-size: 45px;">
-											1
+											<?=$total_student;?>
 										</div>
 										
 										<div class="clearfix"></div>
 
 										<div class="float-right text-white">
-											All student
+											Total Students
 										</div>
 
 									</div>
 								</div>
 							</div>
 
-							<a href="#" style="background-color:  #fdfefe; text-decoration: none; font-size: 14px;">
+							<a href="admin.php?page=all-student" style="background-color:  #fdfefe; text-decoration: none; font-size: 14px;">
 								<div class="card-footer">
 								   <span class="">View all student</span>
 								   <span class="float-right"><i class="far fa-arrow-alt-circle-right"></i></span>
@@ -54,20 +61,20 @@ require_once 'config.php';
 
 									<div class="col-sm-9">
 										<div class="text-white float-right" style="font-size: 45px;">
-											1
+											<?=$total_users;?>
 										</div>
 										
 										<div class="clearfix"></div>
 
 										<div class="float-right text-white">
-											Users
+											Total Users
 										</div>
 
 									</div>
 								</div>
 							</div>
 
-							<a href="#" style="background-color:  #fdfefe; text-decoration: none; font-size: 14px;">
+							<a href="admin.php?page=all-users" style="background-color:  #fdfefe; text-decoration: none; font-size: 14px;">
 								<div class="card-footer">
 								   <span class="">View all users</span>
 								   <span class="float-right"><i class="far fa-arrow-alt-circle-right"></i></span>
@@ -77,39 +84,6 @@ require_once 'config.php';
 						</div>
 					</div>
 
-
-					<div class="col-sm-4">
-						<div class="card bg-primary">
-							<div class="card-header">
-								<div class="row">
-									<div class="col-sm-3">
-										<i class="fas fa-users fa-5x text-white"></i>
-									</div>
-
-									<div class="col-sm-9">
-										<div class="text-white float-right" style="font-size: 45px;">
-											1
-										</div>
-										
-										<div class="clearfix"></div>
-
-										<div class="float-right text-white">
-											Users
-										</div>
-
-									</div>
-								</div>
-							</div>
-
-							<a href="#" style="background-color:  #fdfefe; text-decoration: none; font-size: 14px;">
-								<div class="card-footer">
-								   <span class="">View all student</span>
-								   <span class="float-right"><i class="far fa-arrow-alt-circle-right"></i></span>
-							    </div>
-							</a>
-
-						</div>
-					</div>
 
 
 				</div>
@@ -144,29 +118,30 @@ require_once 'config.php';
 							<th>Class <a href="" class="float-right"><i class="fas fa-long-arrow-alt-down"></i><i class="fas fa-long-arrow-alt-up"></i></a></th>
 							<th>Contact <a href="" class="float-right"><i class="fas fa-long-arrow-alt-down"></i><i class="fas fa-long-arrow-alt-up"></i></a></th>
 							<th>City <a href="" class="float-right"><i class="fas fa-long-arrow-alt-down"></i><i class="fas fa-long-arrow-alt-up"></i></a></th>
-							<th>Photo <a href="" class="float-right"><i class="fas fa-long-arrow-alt-down"></i><i class="fas fa-long-arrow-alt-up"></i></a></th>
+							<th class="text-center">Photo </th>
 						</tr>
 
 						<?php
-						
+							$i=1;
 							$show_query = mysqli_query($link,"SELECT * FROM `add_student`");
 
 							while($row = mysqli_fetch_assoc($show_query)){?>
 
 						<tr>
-							<td><?=$row['id'];?></td>
+							<td><?=$i;?></td>
 							<td><?=ucwords($row['name']);?></td>
 							<td><?=$row['roll'];?></td>
 							<td><?=$row['class'];?></td>
 							<td><?=$row['contact'];?></td>
 							<td><?=$row['city'];?></td>
-							<td>
-								<img style="width: 50px; height: 50px;" src="student_photo/<?php echo $row['photo'];?>" alt=""/>
+							<td class="text-center">
+								<img width="80px" height="80px" src="student_photo/<?= $row['photo'];?>" alt="">
 							</td>
+							
 						</tr>
 
 							<?php
-							 } ?>
+							 $i++;} ?>
 
 						
 					</table>

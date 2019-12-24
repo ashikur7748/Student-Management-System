@@ -52,10 +52,10 @@
 		   			if (strlen($username)>7) {
 		   				if (strlen($password)>7) {
 		   					if ($password == $confirm_password) {
-		   						$data_insert = "INSERT INTO `user_information`(`username`, `email`, `phone`, `password`, `confirm_password`, `gender`, `image`) VALUES ('$username','$email','$phone','$password','$confirm_password','$gender','$image')";
+		   						$data_insert = "INSERT INTO `user_information`(`username`, `email`, `phone`, `password`, `confirm_password`, `gender`, `image`) VALUES ('$username','$email','$phone','$password','$confirm_password','$gender','$image_name')";
 		   						$data_insert_result = mysqli_query($link,$data_insert);
 		   						if ($data_insert_result) {
-		   							move_uploaded_file($_FILES['image'] ['tmp_name'], 'upload/'.$image_name);
+		   							move_uploaded_file($_FILES['image'] ['tmp_name'], 'user_photo/'.$image_name);
 		   							$_SESSION['data_insert_success'] = "Data Save Successfully";
 		   							header('Location: registration.php');
 		   						}else{

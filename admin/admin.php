@@ -31,7 +31,7 @@ if (!$_SESSION['user_login']) {
         <a class="nav-link text-white" href="#"><i class="fas fa-user-plus mr-1 "></i>Add user</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#"><i class="fas fa-user mr-1"></i>Profile</a>
+        <a class="nav-link text-white" href="admin.php?page=user_profile"><i class="fas fa-user mr-1"></i>Profile</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" href="logout.php"><i class="fas fa-power-off mr-1 text-danger"></i>Logout</a>

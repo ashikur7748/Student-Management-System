@@ -44,35 +44,36 @@ require_once 'config.php';
 							<th>Class <a href="" class="float-right"><i class="fas fa-long-arrow-alt-down"></i><i class="fas fa-long-arrow-alt-up"></i></a></th>
 							<th>Contact <a href="" class="float-right"><i class="fas fa-long-arrow-alt-down"></i><i class="fas fa-long-arrow-alt-up"></i></a></th>
 							<th>City <a href="" class="float-right"><i class="fas fa-long-arrow-alt-down"></i><i class="fas fa-long-arrow-alt-up"></i></a></th>
-							<th>Photo <a href="" class="float-right"><i class="fas fa-long-arrow-alt-down"></i><i class="fas fa-long-arrow-alt-up"></i></a></th>
+							<th class="text-center">Photo </th>
 							<th class="text-center">Action</th>
 						</tr>
 
 						<?php
-						
+							$i=1;
 							$show_query = mysqli_query($link,"SELECT * FROM `add_student`");
 
 							while($row = mysqli_fetch_assoc($show_query)){?>
 
 						<tr>
-							<td><?=$row['id'];?></td>
+							<td><?=$i;?></td>
 							<td><?=ucwords($row['name']);?></td>
 							<td><?=$row['roll'];?></td>
 							<td><?=$row['class'];?></td>
 							<td><?=$row['contact'];?></td>
 							<td><?=$row['city'];?></td>
-							<td>
-								<img style="width: 50px; height: 50px;" src="student_photo/<?php echo $row['photo'];?>" alt=""/>
+							<td class="text-center">
+								<img width="80px" height="80px" src="student_photo/<?php echo $row['photo'];?>" alt=""/>
 							</td>
 							<td class="text-center">
-								<a href="" class="btn btn-sm btn-warning mr-1"><i class="far fa-edit mr-1"></i>Edit</a>
+								<a href="admin.php?page=update-student&id=<?=base64_encode($row['id']);?>" class="btn btn-sm btn-warning mr-1"><i class="far fa-edit mr-1"></i>Edit</a>
+
 								<a href="delete.php?id=<?=base64_encode($row['id']);?>" class="btn btn-sm btn-danger"><i class="far fa-trash-alt mr-1"></i>Delete</a>
 							</td>
 							
 						</tr>
 
 							<?php
-							 } ?>
+							$i++; } ?>
 
 						
 					</table>

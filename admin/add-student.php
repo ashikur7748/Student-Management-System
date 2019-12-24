@@ -17,7 +17,7 @@ if (isset($_POST['add'])) {
 	}
 	
 	$insert_query = "INSERT INTO `add_student`(`name`, `roll`, `class`, `city`, `contact`, `photo`)
-	 VALUES ('$name', '$roll', '$city', '$contact', '$class', '$photo')";
+	 VALUES ('$name', '$roll', '$class', '$city', '$contact', '$photo_new_name')";
 	 $query_run = mysqli_query($link, $insert_query);
 	 if ($query_run) {
 	 	move_uploaded_file($_FILES['photo']['tmp_name'], 'student_photo/'.$photo_new_name);
@@ -61,6 +61,7 @@ if (isset($_POST['add'])) {
 							<div class="form-group">
 							    <label for="class">Class</label>
 							    <select name="class" class="form-control" id="class">
+							    	<option selected="">Select</option>
 									  <option value="One">One</option>
 									  <option value="Two">Two</option>
 									  <option value="Three">Three</option>
